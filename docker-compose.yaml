@@ -1,0 +1,61 @@
+version: "3.8"
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.9.7-management-alpine
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    networks:
+      - realtime-transaction-nextwork
+
+  redis:
+    image: redis:7.0.4-alpine
+    ports:
+      - 6379:6379
+    networks:
+      - realtime-transaction-nextwork
+
+  wsgi_app:
+    build: .
+    container_name: realtime-transaction-wsgi
+    restart: on-failure:3
+    ports: 
+      - 8000:8000
+    volumes:
+      - .:/app
+    command: >
+      sh -c "python3 manage.py runscript scripts.setup &&
+             gunicorn main.wsgi:application -w 2 -b :8000 --reload"
+    env_file:
+      - .env
+    depends_on:
+      - rabbitmq
+      - redis
+    networks:
+      - realtime-transaction-nextwork
+
+  asgi_app:
+    build: .
+    container_name: realtime-transaction-asgi
+    restart: on-failure:3
+    ports: 
+      - 8001:8001
+    volumes:
+      - .:/app
+    command: >
+      sh -c "daphne -b 0.0.0.0 -p 8001 main.asgi:application"
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - wsgi_app
+    networks:
+      - realtime-transaction-nextwork
+
+networks:
+  realtime-transaction-nextwork:
+    driver: bridge
