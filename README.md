@@ -1,0 +1,1 @@
+![Architecture](utils/docs/images/architecture.png)
