@@ -1,0 +1,10 @@
+*.log
+__pycache__/
+
+db.sqlite3
+
+*.env
+
+# don't ignore
+!.env.example
+!.db.env.example
