@@ -10,7 +10,7 @@ The purpose of this whole system, is to :
 - Microservice will process data
 - Microservice will send state changes to backend using webhook
 - The state update will be sent from backend to connected User
-
+<br></br>
 
 ### Spinning up the server using Docker
 1. The following command will start the django server.
@@ -20,7 +20,7 @@ The purpose of this whole system, is to :
 2. It will also create a new network called `realtime-transaction-nextwork`, to which the microservice will connect (created a `network bridge` for simplicity of running everything on development system).
 3. Run the [service-01](https://github.com/hardikambati/transaction-service01) microservice to process the transaction request.
 
-
+<br></br>
 ### Architecture that describes everything!
 
 ![Architecture](utils/docs/images/architecture.png)
