@@ -18,6 +18,8 @@ The purpose of this whole system, is to :
     docker-compose up --build
     ```
 2. It will also create a new network called `realtime-transaction-nextwork`, to which the microservice will connect (`network bridge` created so that this backend container can accept requests from other containers, locally).
+
+### Creating Resources on the server
 3. Run the [service-01](https://github.com/hardikambati/transaction-service01) microservice to process the transaction request.
 4. Head over to [http://localhost:8000/swagger/](http://localhost:8000/swagger/).
 5. `/auth/registration/` : Create a User
