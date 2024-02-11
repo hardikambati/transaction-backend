@@ -7,6 +7,8 @@ db.sqlite3
 *env*
 *.env
 
+plan.txt
+
 # don't ignore
 !.env.example
 !.db.env.example
