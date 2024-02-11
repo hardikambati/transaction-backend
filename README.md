@@ -31,13 +31,12 @@ The purpose of this whole system, is to :
     ```
 7. `/api/transaction/` : Create a transaction.
 8. Status updates will be received on the connected websocket channel.
-
-
 <br></br>
+
 ## Architecture that describes everything!
 
 ![Architecture](utils/docs/images/architecture.png)
-
+<br></br>
 
 ## Read what's going on in the system in detail :
 
