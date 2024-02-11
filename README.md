@@ -19,15 +19,15 @@ The purpose of this whole system, is to :
     ```
 2. It will also create a new network called `realtime-transaction-nextwork`, to which the microservice will connect (`network bridge` created so that this backend container can accept requests from other containers, locally).
 3. Run the [service-01](https://github.com/hardikambati/transaction-service01) microservice to process the transaction request.
-4. Head over to [Swagger Doc](http://localhost:8000/swagger/).
-5. Create a User using `/auth/registration/` API.
-6. Login using `/auth/login/` API.
+4. Head over to [http://localhost:8000/swagger/](http://localhost:8000/swagger/).
+5. `/auth/registration/` : Create a User
+6. `/auth/login/` : Login
 7. Listen to websocket channel here
     ```
     ws://localhost:8001/ws/transaction/?token=<authorization_token>
     ```
-7. Create a transaction using `/api/transaction/` API.
-8. Status updates will be received on the connected channel.
+7. `/api/transaction/` : Create a transaction.
+8. Status updates will be received on the connected websocket channel.
 
 
 <br></br>
