@@ -13,6 +13,7 @@ The purpose of this whole system, is to :
 <br></br>
 
 ### Spinning up the server using Docker
+---
 1. The following command will start the django server.
     ```
     docker-compose up --build
@@ -20,6 +21,7 @@ The purpose of this whole system, is to :
 2. It will also create a new network called `realtime-transaction-nextwork`, to which the microservice will connect (`network bridge` created so that this backend container can accept requests from other containers, locally).
 
 ### Creating Resources on the server
+---
 3. Run the [service-01](https://github.com/hardikambati/transaction-service01) microservice to process the transaction request.
 4. Head over to [http://localhost:8000/swagger/](http://localhost:8000/swagger/).
 5. `/auth/registration/` : Create a User
@@ -39,7 +41,7 @@ The purpose of this whole system, is to :
 
 
 ### Read what's going on in the system in detail :
-
+---
 1. Once a transaction is created at the backend, a message is sent to a queue.
 2. Parallely, the User who has created the transaction, will be connected to a websocket channel, to the backend.
 3. The microservice will be listening to this queue.
